@@ -1,0 +1,17 @@
+.info-title{
+    font-weight: 700 !important;
+    color: rgba(128, 128, 128, 0.677);
+    margin-bottom: 0.5rem !important;
+    font-family: 'Times New Roman', Times, serif !important;
+
+}
+.info-cards{
+    padding: 1rem 2rem !important;
+    flex: 1 !important;
+}
+.info-total{
+    margin-top: 0.5rem 0 !important;
+    font-weight: 500 !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+    color: rgba(128, 128, 128, 0.677);
+}

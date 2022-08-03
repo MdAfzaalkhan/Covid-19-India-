@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f5f6fa;
+}
+.info-stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header > img {
+  width: 100px;
+  height: 100px;
+  margin-right: 2rem;
+}
+.head-text {
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+}
+.confirmed{
+    border-top: 3px solid #e67e22;
+}
+.active{
+    border-top: 3px solid red ;
+}
+.recovered{
+    border-top: 3px solid #2ecc71;
+}
+.deaths{
+    border-top: 3px solid #34495e;
+}
+.active-count{
+    color: #cc1034 !important;
+    font-weight: 500 !important;
+    font-size: large !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+.recover-count{
+    color:  #2ecc71!important;
+    font-weight: 500 !important;
+    font-size: large !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+.death-count{
+    color:  #34495e!important;
+    font-weight: 500 !important;
+    font-size: large !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+.confirm-count{
+    color:  #e67e22!important;
+    font-weight: 500 !important;
+    font-size: large !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
