@@ -12,6 +12,9 @@ const Home = () => {
   const [districtInfo, setDistrictInfo] = useState([]);
   const [districtInfoCopy, setDistrictInfoCopy] = useState([]);
 
+  const [selectedStateCode, setSelectedStateCode] = useState("");
+
+
   useEffect(() => {
     apiData();
     districtApi();
@@ -49,7 +52,24 @@ const Home = () => {
     setStateInfo(() => [...data]);
   };
 
-  console.log(stateInfo);
+  const handleInnerSort=(param, asc)=> {
+    const data=Object.entries(districtInfo);
+
+    console.log(data)
+//confirmed
+var sortedData=[]
+if (asc) {
+    sortedData= data?.sort((a,b)=> a[1].total[param] - b[1].total[param]);
+  }else{
+    sortedData= data?.sort((a,b)=> b[1].total[param] - a[1].total[param]);
+  }
+  setDistrictInfo(()=> [...sortedData])
+}
+
+  // console.log("districtInfo:-> ",districtInfo);
+  // for (const key in districtInfo) {
+  //   console.log("states:-> ",districtInfo[key]?.districts);
+  // }
   return (
     <>
       <div className="main-wrapper">
@@ -94,6 +114,9 @@ const Home = () => {
             stateInfo={stateInfo}
             districtInfo={districtInfo}
             handleSort={handleSort}
+            selectedStateCode={selectedStateCode}
+            setSelectedStateCode={setSelectedStateCode}
+            handleInnerSort={handleInnerSort}
           />
         </div>
       </div>
