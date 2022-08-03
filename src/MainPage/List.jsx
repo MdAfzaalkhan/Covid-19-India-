@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "@mui/material";
+import ShareIcon from "@mui/icons-material/Share";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -11,7 +12,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import Collapse from "@mui/material/Collapse";
-import "./List.css";
+
 const Lists = ({
   stateInfo,
   districtInfo,
@@ -20,6 +21,9 @@ const Lists = ({
   selectedStateCode,
   setSelectedStateCode,
 }) => {
+  const myStyle = {
+    color: "#a5b1c2",
+  };
   const [open, setOpen] = useState(-1);
   // const [selectedStateCode, setSelectedStateCode] = useState("");
 
@@ -28,9 +32,9 @@ const Lists = ({
       <div className="list">
         <TableContainer>
           <Table>
-            <TableHead className="head-row">
+            <TableHead>
               <TableRow>
-                <TableCell align="left">
+                <TableCell style={myStyle} align="left">
                   {/* <span className="arrows">
                     <IconButton>
                       <ArrowUpwardIcon fontSize="small" />
@@ -41,50 +45,75 @@ const Lists = ({
                 </span> */}
                   State/UT
                 </TableCell>
-                <TableCell align="center">
+                <TableCell style={myStyle} align="center">
                   <span className="arrows">
                     Confirmed
-                    <IconButton onClick={() => handleSort("confirmed", true)}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("confirmed", true)}
+                    >
                       <ArrowUpwardIcon fontSize="small" />
                     </IconButton>
-                    <IconButton onClick={() => handleSort("confirmed")}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("confirmed")}
+                    >
                       <ArrowDownwardIcon fontSize={"small"} />
                     </IconButton>
                   </span>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell style={myStyle} align="center">
                   <span className="arrows">
                     Active
-                    <IconButton onClick={() => handleSort("active", true)}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("active", true)}
+                    >
                       <ArrowUpwardIcon fontSize="small" />
                     </IconButton>
-                    <IconButton onClick={() => handleSort("active")}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("active")}
+                    >
                       <ArrowDownwardIcon fontSize={"small"} />
                     </IconButton>
                   </span>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell style={myStyle} align="center">
                   <span className="arrows">
                     Recovered
-                    <IconButton onClick={() => handleSort("recovered", true)}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("recovered", true)}
+                    >
                       <ArrowUpwardIcon fontSize="small" />
                     </IconButton>
-                    <IconButton onClick={() => handleSort("recovered")}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("recovered")}
+                    >
                       <ArrowDownwardIcon fontSize={"small"} />
                     </IconButton>
                   </span>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell style={myStyle} align="center">
                   <span className="arrows">
                     Deaths
-                    <IconButton onClick={() => handleSort("deaths", true)}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("deaths", true)}
+                    >
                       <ArrowUpwardIcon fontSize="small" />
                     </IconButton>
-                    <IconButton onClick={() => handleSort("deaths")}>
+                    <IconButton
+                      style={myStyle}
+                      onClick={() => handleSort("deaths")}
+                    >
                       <ArrowDownwardIcon fontSize={"small"} />
                     </IconButton>
                   </span>
                 </TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             {stateInfo?.map((item, index) => {
@@ -92,7 +121,7 @@ const Lists = ({
                 <>
                   <TableBody key={index}>
                     <TableRow>
-                      <TableCell align="left">
+                      <TableCell style={myStyle} align="left">
                         {
                           <IconButton
                             aria-label="expand row"
@@ -111,37 +140,58 @@ const Lists = ({
                         }
                         {item.state}
                       </TableCell>
-                      <TableCell align="center">{item.confirmed}</TableCell>
-                      <TableCell align="center">{item.active}</TableCell>
-                      <TableCell align="center">{item.recovered}</TableCell>
-                      <TableCell align="center">{item.deaths}</TableCell>
+                      <TableCell style={myStyle} align="center">
+                        {item.confirmed}
+                      </TableCell>
+                      <TableCell style={myStyle} align="center">
+                        {item.active}
+                      </TableCell>
+                      <TableCell style={myStyle} align="center">
+                        {item.recovered}
+                      </TableCell>
+                      <TableCell style={myStyle} align="center">
+                        {item.deaths}
+                      </TableCell>
+                      <TableCell style={myStyle} align="center">
+                        <IconButton>
+                          <ShareIcon />
+                        </IconButton>
+                      </TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell>
+                      <TableCell
+                        style={{
+                          paddingBottom: 0,
+                          paddingTop: 0,
+                          borderBottom: "none",
+                        }}
+                      >
                         <Collapse in={index === open}>
                           <Table size="small">
                             <TableHead>
                               <TableRow>
-                                <TableCell align="center">Districts</TableCell>
-                                <TableCell align="center">
+                                <TableCell style={myStyle} align="center">
+                                  Districts
+                                </TableCell>
+                                <TableCell style={myStyle} align="center">
                                   <span className="arrows">
                                     Vaccinate(Dose-1)
-                                    <IconButton>
+                                    <IconButton style={myStyle}>
                                       <ArrowUpwardIcon fontSize="small" />
                                     </IconButton>
-                                    <IconButton>
+                                    <IconButton style={myStyle}>
                                       <ArrowDownwardIcon fontSize={"small"} />
                                     </IconButton>
                                   </span>
                                 </TableCell>
 
-                                <TableCell align="center">
+                                <TableCell style={myStyle} align="center">
                                   <span className="arrows">
                                     Vaccinated(Dose-2)
-                                    <IconButton>
+                                    <IconButton style={myStyle}>
                                       <ArrowUpwardIcon fontSize="small" />
                                     </IconButton>
-                                    <IconButton>
+                                    <IconButton style={myStyle}>
                                       <ArrowDownwardIcon fontSize={"small"} />
                                     </IconButton>
                                   </span>
@@ -155,14 +205,16 @@ const Lists = ({
                                 districtInfo[selectedStateCode]?.districts
                               ).map((ele, ind) => (
                                 <TableRow key={ind}>
-                                  <TableCell align="center">{ele}</TableCell>
-                                  <TableCell align="center">
+                                  <TableCell style={myStyle} align="center">
+                                    {ele}
+                                  </TableCell>
+                                  <TableCell style={myStyle} align="center">
                                     {
                                       districtInfo[selectedStateCode]
                                         ?.districts[ele]?.delta7?.vaccinated1
                                     }
                                   </TableCell>
-                                  <TableCell align="center">
+                                  <TableCell style={myStyle} align="center">
                                     {
                                       districtInfo[selectedStateCode]
                                         ?.districts[ele]?.delta7?.vaccinated2

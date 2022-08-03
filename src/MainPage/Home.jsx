@@ -4,16 +4,16 @@ import InfoBox from "./InfoBox";
 import "./Home.css";
 import axios from "axios";
 import Lists from "./List";
+import { TextField } from "@mui/material";
+import MapStats from "./MapStats";
 
 const Home = () => {
   const [stateInfo, setStateInfo] = useState([]);
-  const [stateCopy, setStateCopy] = useState([]);
   const [totalCase, setTotalCase] = useState([]);
+  const [stateCaseCopy, setStateCaseCopy] = useState([]);
   const [districtInfo, setDistrictInfo] = useState([]);
   const [districtInfoCopy, setDistrictInfoCopy] = useState([]);
-
   const [selectedStateCode, setSelectedStateCode] = useState("");
-
 
   useEffect(() => {
     apiData();
@@ -24,7 +24,7 @@ const Home = () => {
       .get("https://data.covid19india.org/data.json")
       .then((allData) => {
         setStateInfo(allData.data.statewise.slice(1));
-        setStateCopy(allData.data);
+        setStateCaseCopy(allData.data.statewise.slice(1));
         setTotalCase(allData.data.statewise.slice(0, 1));
       })
       .catch((error) => {
@@ -37,8 +37,9 @@ const Home = () => {
       .then((response) => {
         setDistrictInfo(response.data);
         setDistrictInfoCopy(response.data);
-
-        // setStateInfo((prevState)=>[...prevState,response.data])
+      })
+      .catch((err) => {
+        alert("Districts Data not Found");
       });
   };
 
@@ -52,24 +53,27 @@ const Home = () => {
     setStateInfo(() => [...data]);
   };
 
-  const handleInnerSort=(param, asc)=> {
-    const data=Object.entries(districtInfo);
+  const handleSearch = (searchInput) => {
+    if (searchInput !== "") {
+      const searchArr = stateCaseCopy.filter((item) =>
+        item.state.toLowerCase().includes(searchInput.trim().toLowerCase())
+      );
 
-    console.log(data)
-//confirmed
-var sortedData=[]
-if (asc) {
-    sortedData= data?.sort((a,b)=> a[1].total[param] - b[1].total[param]);
-  }else{
-    sortedData= data?.sort((a,b)=> b[1].total[param] - a[1].total[param]);
-  }
-  setDistrictInfo(()=> [...sortedData])
-}
+      setStateInfo([...searchArr]);
+    }
+  };
+  // const handleInnerSort = (param, asc) => {
+  //   const data = Object.entries(districtInfo);
 
-  // console.log("districtInfo:-> ",districtInfo);
-  // for (const key in districtInfo) {
-  //   console.log("states:-> ",districtInfo[key]?.districts);
-  // }
+  //   console.log(data);
+  //   var sortedData = [];
+  //   if (asc) {
+  //     sortedData = data?.sort((a, b) => a[1].total[param] - b[1].total[param]);
+  //   } else {
+  //     sortedData = data?.sort((a, b) => b[1].total[param] - a[1].total[param]);
+  //   }
+  //   setDistrictInfo(() => [...sortedData]);
+  // };
   return (
     <>
       <div className="main-wrapper">
@@ -109,15 +113,37 @@ if (asc) {
             />
           </section>
         </div>
-        <div className="table-wrap">
-          <Lists
-            stateInfo={stateInfo}
-            districtInfo={districtInfo}
-            handleSort={handleSort}
-            selectedStateCode={selectedStateCode}
-            setSelectedStateCode={setSelectedStateCode}
-            handleInnerSort={handleInnerSort}
-          />
+        <div className="map">
+          <MapStats stateInfo={stateInfo}/>
+        </div>
+        <div className="search-table" id="search-table">
+          <div
+            className="search"
+            style={{
+              width: "60%",
+              marginLeft: "20%",
+            }}
+          >
+            <TextField
+             
+              label="Search Stats By State"
+              fullWidth
+              variant="standard"
+              onChange={(event) => {
+                handleSearch(event.target.value);
+              }}
+            />
+          </div>
+          <div className="table-wrap">
+            <Lists
+              stateInfo={stateInfo}
+              districtInfo={districtInfo}
+              handleSort={handleSort}
+              selectedStateCode={selectedStateCode}
+              setSelectedStateCode={setSelectedStateCode}
+              // handleInnerSort={handleInnerSort}
+            />
+          </div>
         </div>
       </div>
     </>

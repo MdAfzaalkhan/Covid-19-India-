@@ -5,7 +5,8 @@
   padding: 0;
 }
 body {
-  background-color: #f5f6fa;
+  background-color: #34495e;
+  color: #bdbdbd;
 }
 .info-stats {
   display: flex;
@@ -63,4 +64,18 @@ body {
     font-weight: 500 !important;
     font-size: large !important;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+.main-wrapper{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.map{
+position: relative;
+}
+.map > MapStats{
+  position: absolute;
+}
+.search-table{
+  margin-top: 85rem;
 }
