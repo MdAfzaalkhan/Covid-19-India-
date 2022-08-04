@@ -56,8 +56,9 @@ const Home = () => {
 
   const handleSearch = (searchInput) => {
     if (searchInput !== "") {
-      const searchArr = stateCaseCopy.filter((item) =>
-        item.state.toLowerCase().includes(searchInput.trim().toLowerCase())
+      const searchArr = stateCaseCopy.filter((item) =>{
+       return item.state.toLowerCase().includes(searchInput.trim().toLowerCase()) 
+      }
       );
     
       setStateInfo([...searchArr]);

@@ -72,16 +72,16 @@ body {
   width: 100%;
 }
 .left-side{
-  width: 5%;
+  width: 3%;
   height: 100vh;
   position: fixed;
   background-color: #535c68;
 }
 .right-side{
   
-  width: 95%;
+  width: 97%;
   margin-left: 10%;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
 }
 .map{
 position: relative;

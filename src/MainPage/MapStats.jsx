@@ -2,54 +2,32 @@ import React from "react";
 import DatamapsIndia from "react-datamaps-india";
 
 function MapStats(stateInfo) {
-console.log("stateInfo;- ",stateInfo)
+  // console.log("stateInfo;- ",stateInfo.stateInfo)
+
+  let OBJ = {};
+  stateInfo.stateInfo.forEach((ele) => {
+    const validState = () => {
+      switch (ele.state) {
+        case "Andaman and Nicobar Islands":
+          return "Andaman & Nicobar Island";
+        case "Dadra and Nagar Haveli and Daman and Diu":
+          return "Dadara & Nagar Haveli";
+        case "State Unassigned":
+          return "Daman & Diu";
+        case "Jammu and Kashmir":
+          return "Jammu & Kashmir";
+        case "Arunachal Pradesh":
+          return "Arunanchal Pradesh";
+        default:
+          return ele.state;
+      }
+    };
+    OBJ[validState()] = { value: ele.confirmed };
+  });
   return (
     <>
       <DatamapsIndia
-        regionData={{
-            Maharashtra:{
-                value:`58`
-            },
-            "Andaman and Nicobar Island":{
-                value:`45`
-            },
-            "Andhra Pradesh":{
-                value:``
-            },
-            "Arunanchal Pradesh":{
-                value:``
-            },
-            "Assam":{
-                value:``
-            },
-            "Bihar":{
-                value:``
-            },
-            "Chattisgarh":{
-                value:``
-            },
-            "Chandigarh":{
-                value:``
-            },
-            "Dadara & Nagar Haveli":{
-                value:``
-            },
-            "Daman & Diu":{
-                value:``
-            },
-            "Karnataka":{
-                value:``
-            },
-            "Telangana":{
-                value:``
-            },
-            "Kerala":{
-                value:``
-            },
-            "Punjab":{
-                value:``
-            }
-        }}
+        regionData={OBJ}
         hoverComponent={({ value }) => {
           return (
             <>
@@ -59,12 +37,12 @@ console.log("stateInfo;- ",stateInfo)
           );
         }}
         mapLayout={{
-        
+          legendTitle:"Ratio of confirmed Patients",
           backgroundColor: "",
           noDataColor: "#f5f5f5",
           borderColor: "#8D8D8D",
           hoverBorderColor: "#8D8D8D",
-          hoverColor: "#fd9644",
+          hoverColor: "green",
         }}
       />
     </>
