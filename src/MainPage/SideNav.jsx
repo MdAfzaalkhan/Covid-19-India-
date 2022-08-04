@@ -2,7 +2,7 @@ import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
-import SideLogo from "../Images/coronavirus-5107715_640.png"
+import { Link } from "react-scroll";
 
 const SideNav = () => {
   return (
@@ -15,17 +15,21 @@ const SideNav = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100%",
+          padding: "5px 0",
         }}
       >
-        <section className="side-nav-logo">
-            
-        </section>  
-        <IconButton sx={{color:"#bdbdbd"}}>
-          <HomeIcon fontSize="large" />
-        </IconButton>
-        <IconButton sx={{color:"#bdbdbd",mt:"1rem"}}>
-          <SearchIcon fontSize="large"  />
-        </IconButton>
+        <section className="side-nav-logo"></section>
+        <Link to="header" spy={true} smooth={true} offset={0} duration={500}>
+          <IconButton sx={{ color: "#bdbdbd" }}>
+            <HomeIcon fontSize="large" />
+          </IconButton>
+        </Link>
+
+        <Link to="search" spy={true} smooth={true} offset={0} duration={500}>
+          <IconButton sx={{ color: "#bdbdbd", mt: "1rem" }}>
+            <SearchIcon fontSize="large" />
+          </IconButton>
+        </Link>
       </div>
     </>
   );

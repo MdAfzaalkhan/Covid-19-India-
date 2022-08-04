@@ -15,6 +15,7 @@ const Home = () => {
   const [districtInfo, setDistrictInfo] = useState([]);
   const [districtInfoCopy, setDistrictInfoCopy] = useState([]);
   const [selectedStateCode, setSelectedStateCode] = useState("");
+  const [error,setError] = useState("")
 
   useEffect(() => {
     apiData();
@@ -29,7 +30,7 @@ const Home = () => {
         setTotalCase(allData.data.statewise.slice(0, 1));
       })
       .catch((error) => {
-        alert("No data Found", error);
+        setError(error.messsage);
       });
   };
   const districtApi = () => {
@@ -39,9 +40,9 @@ const Home = () => {
         setDistrictInfo(response.data);
         setDistrictInfoCopy(response.data);
       })
-      .catch((err) => {
-        alert("Districts Data not Found");
-      });
+      // .catch((err) => {
+      //   setError(err.messsage)
+      // });
   };
 
   const handleSort = (condition, ascend) => {
@@ -56,14 +57,16 @@ const Home = () => {
 
   const handleSearch = (searchInput) => {
     if (searchInput !== "") {
-      const searchArr = stateCaseCopy.filter((item) =>{
-       return item.state.toLowerCase().includes(searchInput.trim().toLowerCase()) 
-      }
-      );
-    
+      const searchArr = stateCaseCopy.filter((item) => {
+        return item.state
+          .toLowerCase()
+          .includes(searchInput.trim().toLowerCase());
+      });
+
       setStateInfo([...searchArr]);
     }
   };
+console.log(error);
   // const handleInnerSort = (param, asc) => {
   //   const data = Object.entries(districtInfo);
 
@@ -79,11 +82,12 @@ const Home = () => {
   return (
     <>
       <div className="main-wrapper">
+        {error && <div>{error}</div>}
         <div className="left-side">
           <SideNav />
         </div>
         <div className="right-side">
-          <div className="header-wrap">
+          <div className="header-wrap" id="header">
             <div className="header" style={{ marginTop: "1rem" }}>
               <img src={Logo} alt="Covid Logo" />
               <span className="head-text">COVID-19 | India</span>
@@ -131,9 +135,11 @@ const Home = () => {
               }}
             >
               <TextField
+              autoComplete="off"
+              id="search"
                 label="Search Stats By State"
                 fullWidth
-                variant="outlined"
+                variant="filled"
                 onChange={(event) => {
                   handleSearch(event.target.value);
                 }}
