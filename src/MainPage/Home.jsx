@@ -4,7 +4,7 @@ import InfoBox from "./InfoBox";
 import "./Home.css";
 import axios from "axios";
 import Lists from "./List";
-import { Alert, TextField } from "@mui/material";
+import {TextField } from "@mui/material";
 import MapStats from "./MapStats";
 import SideNav from "./SideNav";
 
