@@ -4,7 +4,7 @@ import InfoBox from "./InfoBox";
 import "./Home.css";
 import axios from "axios";
 import Lists from "./List";
-import { TextField } from "@mui/material";
+import { Alert, TextField } from "@mui/material";
 import MapStats from "./MapStats";
 import SideNav from "./SideNav";
 
@@ -15,7 +15,7 @@ const Home = () => {
   const [districtInfo, setDistrictInfo] = useState([]);
   const [districtInfoCopy, setDistrictInfoCopy] = useState([]);
   const [selectedStateCode, setSelectedStateCode] = useState("");
-  const [error,setError] = useState("")
+  const [error, setError] = useState("");
 
   useEffect(() => {
     apiData();
@@ -40,9 +40,9 @@ const Home = () => {
         setDistrictInfo(response.data);
         setDistrictInfoCopy(response.data);
       })
-      // .catch((err) => {
-      //   setError(err.messsage)
-      // });
+      .catch((err) => {
+        setError(err.messsage);
+      });
   };
 
   const handleSort = (condition, ascend) => {
@@ -66,7 +66,7 @@ const Home = () => {
       setStateInfo([...searchArr]);
     }
   };
-console.log(error);
+
   // const handleInnerSort = (param, asc) => {
   //   const data = Object.entries(districtInfo);
 
@@ -92,6 +92,11 @@ console.log(error);
               <img src={Logo} alt="Covid Logo" />
               <span className="head-text">COVID-19 | India</span>
             </div>
+            {/* <section style={{padding:"2rem",paddingRight:"7rem"}}>
+              <Alert variant="filled" severity="warning">
+                This Data is Deprecated as of 13-Aug 2021
+              </Alert>
+            </section> */}
             <section className="info-stats">
               <InfoBox
                 title={"Total Confirmed"}
@@ -135,8 +140,9 @@ console.log(error);
               }}
             >
               <TextField
-              autoComplete="off"
-              id="search"
+              sx={{bgcolor:"white",borderRadius:"5px"}}
+                autoComplete="off"
+                id="search"
                 label="Search Stats By State"
                 fullWidth
                 variant="filled"
@@ -156,6 +162,9 @@ console.log(error);
               />
             </div>
           </div>
+          <section className="footer">
+            <h3>COVID 19 | India Tracker Created By Md Afzaal Khan</h3>
+          </section>
         </div>
       </div>
     </>

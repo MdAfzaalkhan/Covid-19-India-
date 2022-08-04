@@ -12,21 +12,36 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import Collapse from "@mui/material/Collapse";
+import emailjs from "emailjs-com"
 
 const Lists = ({
   stateInfo,
   districtInfo,
   handleSort,
-  handleInnerSort,
   selectedStateCode,
   setSelectedStateCode,
 }) => {
   const myStyle = {
-    color: "#a5b1c2",
+    color: "#f1f2f6",
   };
   const [open, setOpen] = useState(-1);
   // const [selectedStateCode, setSelectedStateCode] = useState("");
-
+  const mailShare = (item,index) =>{
+    const dataShare = {
+      id:index,
+      state:item.state,
+      confirmed:item.confirmed,
+      active:item.active,
+      recovered:item.recovered,
+      death:item.deaths
+    }
+    emailjs.send("service_htbylml","template_l9f1liq",dataShare,"NUVEexlOABH7loZf4")
+    .then((response)=>{
+      console.log("Success!",response.status,response.text);
+    }).catch((error)=>{
+      console.log("Error!!!",error);
+    })
+  }
 
   return (
     <>
@@ -154,7 +169,7 @@ const Lists = ({
                         {item.deaths}
                       </TableCell>
                       <TableCell style={myStyle} align="center">
-                        <IconButton>
+                        <IconButton style={myStyle} onClick={()=> mailShare(item,index)}>
                           <ShareIcon />
                         </IconButton>
                       </TableCell>

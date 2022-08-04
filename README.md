@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Project Title
+Covid 19 | India Tracker 
+Created By : Md Afzaal Khan;
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# API's Used 
+Api's which are provided in documentation was deprecated.
+API's Used in this project to collect data are:
+For State Wise Data :- https://data.covid19india.org/data.json
+For District Wise Data :- https://data.covid19india.org/v4/min/data.min.json
 
-## Available Scripts
+These API's are used from official site of apicovid19inida :https://data.covid19india.org/
 
-In the project directory, you can run:
+# Third Party Modules Used
+Material UI -- Please install all modules from here "mui.com/material-ui/getting-started/installation/"
+Axios -- "npm i axios"
+React Scroll -- "npm i react-scroll"
+For Maps -- "npm i react-datamaps-india"
+CountUp -- "npm i countup"
+Email js -- "npm i emailjs-com"
 
-### `npm start`
+After installing all these modules we can run our project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Tasks Completed
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+As a User you can view Stats of States inside Table with number of patients confirmed,active,recovered,deaths till date.
+As a User you can view Stats of Districts inside subtable of states (Inside Districts Citizens who have taken First and Second Dose of Vaccine is Shown because not enough data was there to show about patients)
+As a User you can Search data with state name in search field
+As a User you can Share State Data with anyone via Email
+As a User you can view number of patients confirmed with respect to state name in Map
+As a User you can sort state data in table with respect to Ascending or Descending Order
 
-### `npm test`
+# Project Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Left side there is vertical Navbar which consists of two MUI icons i.e Home and search icon as you click on searchicon it will automatically scroll page to search bar and when you click home tab or icon it will scroll you back to the top.
+Right Side of the page starts with a simple header with image and project title below title there are four cards which shows us the data of total number of patients confirmed,active,recovered,deaths in India till date viz 13-Aug-2021. Count up effect is given to numbers which are displayed in cards by using third party module named as count-up you can install it as mentioned in above section.
+Below Cards there is a map of our country India which is used with help of third party module named as react data maps india you can install as mentioned in above section. Different colours shows the number of patients where there is light colour there are less number of patients and where there is darkest colour, that region have highest number of patients. Hover over any state to see number of confirmed patients in that region.
+After Map there is a search bar where you can search states with respect to their names.
+Below search bar, data of states is shown in form of table which consists of number of COVID cases confirmed,recovered,active,deaths at extreme left of table in every row there is a drop down icon which will show sub table which consists of district names of that state and number of citizens which have taken dose-1 and dose-2 of vaccination in last 7 days.
+In Head Row of state table every head column consists of two arrows facing up and down respectively by clicking up arrow data will be shown in ascending order means from lowest to highest and by clicking down arrow data will be sorted in descending order means it willbe displayed from maximum to minimum.
+At extreme right of every row there is a share icon by clicking it, user can share data of that particular row to other via Gmail app, it is done by using third party module named as Emailjs.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

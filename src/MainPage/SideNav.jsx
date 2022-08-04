@@ -19,13 +19,13 @@ const SideNav = () => {
         }}
       >
         <section className="side-nav-logo"></section>
-        <Link to="header" spy={true} smooth={true} offset={0} duration={500}>
+        <Link to="header" smooth={true} offset={0} duration={500}>
           <IconButton sx={{ color: "#bdbdbd" }}>
             <HomeIcon fontSize="large" />
           </IconButton>
         </Link>
 
-        <Link to="search" spy={true} smooth={true} offset={0} duration={500}>
+        <Link to="search" smooth={true} offset={0} duration={500}>
           <IconButton sx={{ color: "#bdbdbd", mt: "1rem" }}>
             <SearchIcon fontSize="large" />
           </IconButton>

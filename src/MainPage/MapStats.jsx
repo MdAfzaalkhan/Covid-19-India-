@@ -4,7 +4,7 @@ import DatamapsIndia from "react-datamaps-india";
 function MapStats(stateInfo) {
   // console.log("stateInfo;- ",stateInfo.stateInfo)
 
-  let OBJ = {};
+  let mapStates = {};
   stateInfo.stateInfo.forEach((ele) => {
     const validState = () => {
       switch (ele.state) {
@@ -22,12 +22,12 @@ function MapStats(stateInfo) {
           return ele.state;
       }
     };
-    OBJ[validState()] = { value: ele.confirmed };
+    mapStates[validState()] = { value: ele.confirmed };
   });
   return (
     <>
       <DatamapsIndia
-        regionData={OBJ}
+        regionData={mapStates}
         hoverComponent={({ value }) => {
           return (
             <>
@@ -37,8 +37,7 @@ function MapStats(stateInfo) {
           );
         }}
         mapLayout={{
-          legendTitle:"Ratio of confirmed Patients",
-          backgroundColor: "",
+          legendTitle: "Ratio of confirmed Patients",
           noDataColor: "#f5f5f5",
           borderColor: "#8D8D8D",
           hoverBorderColor: "#8D8D8D",
