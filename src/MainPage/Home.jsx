@@ -4,7 +4,7 @@ import InfoBox from "./InfoBox";
 import "./Home.css";
 import axios from "axios";
 import Lists from "./List";
-import {TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import MapStats from "./MapStats";
 import SideNav from "./SideNav";
 
@@ -140,7 +140,7 @@ const Home = () => {
               }}
             >
               <TextField
-              sx={{bgcolor:"white",borderRadius:"5px"}}
+                sx={{ bgcolor: "white", borderRadius: "5px" }}
                 autoComplete="off"
                 id="search"
                 label="Search Stats By State"
@@ -158,7 +158,6 @@ const Home = () => {
                 handleSort={handleSort}
                 selectedStateCode={selectedStateCode}
                 setSelectedStateCode={setSelectedStateCode}
-                // handleInnerSort={handleInnerSort}
               />
             </div>
           </div>
