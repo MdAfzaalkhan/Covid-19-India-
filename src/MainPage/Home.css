@@ -67,8 +67,21 @@ body {
 }
 .main-wrapper{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   overflow: hidden;
+  width: 100%;
+}
+.left-side{
+  width: 5%;
+  height: 100vh;
+  position: fixed;
+  background-color: #535c68;
+}
+.right-side{
+  
+  width: 95%;
+  margin-left: 10%;
+  padding: 0 1rem;
 }
 .map{
 position: relative;

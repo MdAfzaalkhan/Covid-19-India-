@@ -6,6 +6,7 @@ import axios from "axios";
 import Lists from "./List";
 import { TextField } from "@mui/material";
 import MapStats from "./MapStats";
+import SideNav from "./SideNav";
 
 const Home = () => {
   const [stateInfo, setStateInfo] = useState([]);
@@ -58,7 +59,7 @@ const Home = () => {
       const searchArr = stateCaseCopy.filter((item) =>
         item.state.toLowerCase().includes(searchInput.trim().toLowerCase())
       );
-
+    
       setStateInfo([...searchArr]);
     }
   };
@@ -77,72 +78,76 @@ const Home = () => {
   return (
     <>
       <div className="main-wrapper">
-        <div className="header-wrap">
-          <div className="header" style={{ marginTop: "1rem" }}>
-            <img src={Logo} alt="Covid Logo" />
-            <span className="head-text">COVID-19 | India</span>
+        <div className="left-side">
+          <SideNav />
+        </div>
+        <div className="right-side">
+          <div className="header-wrap">
+            <div className="header" style={{ marginTop: "1rem" }}>
+              <img src={Logo} alt="Covid Logo" />
+              <span className="head-text">COVID-19 | India</span>
+            </div>
+            <section className="info-stats">
+              <InfoBox
+                title={"Total Confirmed"}
+                cases={totalCase[0]?.deltaconfirmed}
+                total={totalCase[0]?.confirmed}
+                className="confirmed"
+                count={"confirm-count"}
+              />
+              <InfoBox
+                title={"Active"}
+                cases={totalCase[0]?.active}
+                total={totalCase[0]?.active}
+                className="active"
+                count={"active-count"}
+              />
+              <InfoBox
+                title={"Recovered"}
+                cases={totalCase[0]?.deltarecovered}
+                total={totalCase[0]?.recovered}
+                className="recovered"
+                count={"recover-count"}
+              />
+              <InfoBox
+                title={"Deaths"}
+                cases={totalCase[0]?.deltadeaths}
+                total={totalCase[0]?.deaths}
+                className="deaths"
+                count={"death-count"}
+              />
+            </section>
           </div>
-          <section className="info-stats">
-            <InfoBox
-              title={"Total Confirmed"}
-              cases={totalCase[0]?.deltaconfirmed}
-              total={totalCase[0]?.confirmed}
-              className="confirmed"
-              count={"confirm-count"}
-            />
-            <InfoBox
-              title={"Active"}
-              cases={totalCase[0]?.active}
-              total={totalCase[0]?.active}
-              className="active"
-              count={"active-count"}
-            />
-            <InfoBox
-              title={"Recovered"}
-              cases={totalCase[0]?.deltarecovered}
-              total={totalCase[0]?.recovered}
-              className="recovered"
-              count={"recover-count"}
-            />
-            <InfoBox
-              title={"Deaths"}
-              cases={totalCase[0]?.deltadeaths}
-              total={totalCase[0]?.deaths}
-              className="deaths"
-              count={"death-count"}
-            />
-          </section>
-        </div>
-        <div className="map">
-          <MapStats stateInfo={stateInfo}/>
-        </div>
-        <div className="search-table" id="search-table">
-          <div
-            className="search"
-            style={{
-              width: "60%",
-              marginLeft: "20%",
-            }}
-          >
-            <TextField
-             
-              label="Search Stats By State"
-              fullWidth
-              variant="standard"
-              onChange={(event) => {
-                handleSearch(event.target.value);
+          <div className="map">
+            <MapStats stateInfo={stateInfo} />
+          </div>
+          <div className="search-table" id="search-table">
+            <div
+              className="search"
+              style={{
+                width: "60%",
+                marginLeft: "20%",
               }}
-            />
-          </div>
-          <div className="table-wrap">
-            <Lists
-              stateInfo={stateInfo}
-              districtInfo={districtInfo}
-              handleSort={handleSort}
-              selectedStateCode={selectedStateCode}
-              setSelectedStateCode={setSelectedStateCode}
-              // handleInnerSort={handleInnerSort}
-            />
+            >
+              <TextField
+                label="Search Stats By State"
+                fullWidth
+                variant="outlined"
+                onChange={(event) => {
+                  handleSearch(event.target.value);
+                }}
+              />
+            </div>
+            <div className="table-wrap">
+              <Lists
+                stateInfo={stateInfo}
+                districtInfo={districtInfo}
+                handleSort={handleSort}
+                selectedStateCode={selectedStateCode}
+                setSelectedStateCode={setSelectedStateCode}
+                // handleInnerSort={handleInnerSort}
+              />
+            </div>
           </div>
         </div>
       </div>

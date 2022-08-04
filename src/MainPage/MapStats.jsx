@@ -2,16 +2,16 @@ import React from "react";
 import DatamapsIndia from "react-datamaps-india";
 
 function MapStats(stateInfo) {
-
+console.log("stateInfo;- ",stateInfo)
   return (
     <>
       <DatamapsIndia
         regionData={{
             Maharashtra:{
-                value:``
+                value:`58`
             },
-            "Andaman & Nicobar Island":{
-                value:``
+            "Andaman and Nicobar Island":{
+                value:`45`
             },
             "Andhra Pradesh":{
                 value:``
