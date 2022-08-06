@@ -3,7 +3,7 @@ import DatamapsIndia from "react-datamaps-india";
 
 function MapStats(stateInfo) {
   // console.log("stateInfo;- ",stateInfo.stateInfo)
-
+  
   let mapStates = {};
   stateInfo.stateInfo.forEach((ele) => {
     const validState = () => {
@@ -24,14 +24,19 @@ function MapStats(stateInfo) {
     };
     mapStates[validState()] = { value: ele.confirmed };
   });
+
+  /*maharashtra:{
+    value:"546"
+  } */
   return (
     <>
+    
       <DatamapsIndia
         regionData={mapStates}
         hoverComponent={({ value }) => {
           return (
             <>
-              <p>{value.name}</p>
+              <h3>{value.name}</h3>
               <p>{value.value}</p>
             </>
           );

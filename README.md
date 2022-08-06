@@ -10,15 +10,9 @@ For District Wise Data :- https://data.covid19india.org/v4/min/data.min.json
 
 These API's are used from official site of apicovid19inida :https://data.covid19india.org/
 
-# Third Party Modules Used
-Material UI -- Please install all modules from here "mui.com/material-ui/getting-started/installation/"
-Axios -- "npm i axios"
-React Scroll -- "npm i react-scroll"
-For Maps -- "npm i react-datamaps-india"
-CountUp -- "npm i countup"
-Email js -- "npm i emailjs-com"
-
-After installing all these modules we can run our project.
+# How to Run 
+Use "npm i" to download all packages
+Then start with "npm start"
 
 # Tasks Completed
 

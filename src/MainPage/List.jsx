@@ -51,14 +51,6 @@ const Lists = ({
             <TableHead>
               <TableRow>
                 <TableCell style={myStyle} align="left">
-                  {/* <span className="arrows">
-                    <IconButton>
-                      <ArrowUpwardIcon fontSize="small" />
-                    </IconButton>
-                    <IconButton>
-                      <ArrowDownwardIcon fontSize={"small"} />
-                    </IconButton>
-                </span> */}
                   State/UT
                 </TableCell>
                 <TableCell style={myStyle} align="center">
@@ -154,7 +146,7 @@ const Lists = ({
                             )}
                           </IconButton>
                         }
-                        {item.state}
+                        {item.state}  
                       </TableCell>
                       <TableCell style={myStyle} align="center">
                         {item.confirmed}

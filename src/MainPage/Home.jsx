@@ -4,7 +4,7 @@ import InfoBox from "./InfoBox";
 import "./Home.css";
 import axios from "axios";
 import Lists from "./List";
-import { TextField } from "@mui/material";
+import { Alert, TextField } from "@mui/material";
 import MapStats from "./MapStats";
 import SideNav from "./SideNav";
 
@@ -18,10 +18,10 @@ const Home = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    apiData();
+    stateApiData();
     districtApi();
   }, []);
-  const apiData = () => {
+  const stateApiData = () => {
     axios
       .get("https://data.covid19india.org/data.json")
       .then((allData) => {
@@ -92,11 +92,11 @@ const Home = () => {
               <img src={Logo} alt="Covid Logo" />
               <span className="head-text">COVID-19 | India</span>
             </div>
-            {/* <section style={{padding:"2rem",paddingRight:"7rem"}}>
+            <section style={{padding:"2rem",paddingRight:"7rem"}}>
               <Alert variant="filled" severity="warning">
                 This Data is Deprecated as of 13-Aug 2021
               </Alert>
-            </section> */}
+            </section>
             <section className="info-stats">
               <InfoBox
                 title={"Total Confirmed"}
